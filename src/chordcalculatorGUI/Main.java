@@ -11,7 +11,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
-//        setUserAgentStylesheet(STYLESHEET_CASPIAN);
         primaryStage.setTitle("Chord Calculator");
         primaryStage.setScene(new Scene(root, 700, 600));
         primaryStage.setMinWidth(700);

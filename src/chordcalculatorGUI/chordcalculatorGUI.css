@@ -9,7 +9,10 @@
     -fx-background-radius: 10 10 10 10;
 }
 
-#selected{
-     -fx-line-spacing: .5em;
-     -fx-font-size:16px;
+#chord{
+    -fx-font-size:22px;
+}
+
+#chordDisplay{
+     -fx-line-spacing:0.5em;
 }
