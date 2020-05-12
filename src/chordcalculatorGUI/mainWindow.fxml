@@ -12,7 +12,7 @@
 
     <Region GridPane.rowIndex="0" GridPane.columnIndex="0" minWidth="50" minHeight="30"/>
 
-    <HBox fx:id="ABox" GridPane.rowIndex="1" GridPane.columnIndex="2" alignment="CENTER" minWidth="90"
+    <HBox styleClass="greyBox" GridPane.rowIndex="1" GridPane.columnIndex="2" alignment="CENTER" minWidth="90"
           maxWidth="90" maxHeight="40" minHeight="40">
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="A"/>
@@ -24,13 +24,13 @@
     <HBox GridPane.rowIndex="1" GridPane.columnIndex="3" spacing="2" alignment="CENTER" minWidth="90"
           maxWidth="90">
         <Region HBox.hgrow="ALWAYS"/>
-        <Label fx:id="AisLabel" text="A#/Bb" />
+        <Label id="AisLabel" text="A#/Bb" />
         <Region HBox.hgrow="ALWAYS"/>
         <CheckBox fx:id="checkBoxAis" onAction="#eventAis" >
         </CheckBox>
     </HBox>
 
-    <HBox fx:id="BBox" GridPane.rowIndex="1" GridPane.columnIndex="4" alignment="CENTER" minWidth="90"
+    <HBox styleClass="greyBox" GridPane.rowIndex="1" GridPane.columnIndex="4" alignment="CENTER" minWidth="90"
           maxWidth="90">
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="B"/>
@@ -55,7 +55,7 @@
         </CheckBox>
     </HBox>
 
-    <HBox fx:id="DBox" GridPane.rowIndex="2" GridPane.columnIndex="3" alignment="CENTER" minWidth="90"
+    <HBox styleClass="greyBox" GridPane.rowIndex="2" GridPane.columnIndex="3" alignment="CENTER" minWidth="90"
           maxWidth="90">
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="D"/>
@@ -72,7 +72,7 @@
         </CheckBox>
     </HBox>
 
-    <HBox fx:id="EBox" GridPane.rowIndex="2" GridPane.columnIndex="5" alignment="CENTER" minWidth="90"
+    <HBox styleClass="greyBox" GridPane.rowIndex="2" GridPane.columnIndex="5" alignment="CENTER" minWidth="90"
           maxWidth="90">
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="E"/>
@@ -81,7 +81,7 @@
         </CheckBox>
     </HBox>
 
-    <HBox fx:id="FBox" GridPane.rowIndex="3" GridPane.columnIndex="2" alignment="CENTER" minHeight="40"
+    <HBox styleClass="greyBox" GridPane.rowIndex="3" GridPane.columnIndex="2" alignment="CENTER" minHeight="40"
           maxHeight="40" minWidth="90" maxWidth="90">
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="F"/>
@@ -98,7 +98,7 @@
         </CheckBox>
     </HBox>
 
-    <HBox fx:id="GBox" GridPane.rowIndex="3" GridPane.columnIndex="4" alignment="CENTER" minWidth="90"
+    <HBox styleClass="greyBox" GridPane.rowIndex="3" GridPane.columnIndex="4" alignment="CENTER" minWidth="90"
           maxWidth="90">
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="G"/>

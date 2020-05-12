@@ -3,37 +3,7 @@
     -fx-font-family: 'Avenir Heavy';
 }
 
-#ABox{
-    -fx-background-color: #E8E8E8;
-    -fx-border-radius: 10 10 10 10;
-    -fx-background-radius: 10 10 10 10;
-}
-
-#BBox{
-    -fx-background-color: #E8E8E8;
-    -fx-border-radius: 10 10 10 10;
-    -fx-background-radius: 10 10 10 10;
-}
-
-#DBox{
-    -fx-background-color: #E8E8E8;
-    -fx-border-radius: 10 10 10 10;
-    -fx-background-radius: 10 10 10 10;
-}
-
-#EBox{
-    -fx-background-color: #E8E8E8;
-    -fx-border-radius: 10 10 10 10;
-    -fx-background-radius: 10 10 10 10;
-}
-
-#FBox{
-    -fx-background-color: #E8E8E8;
-    -fx-border-radius: 10 10 10 10;
-    -fx-background-radius: 10 10 10 10;
-}
-
-#GBox{
+.greyBox{
     -fx-background-color: #E8E8E8;
     -fx-border-radius: 10 10 10 10;
     -fx-background-radius: 10 10 10 10;
@@ -42,6 +12,4 @@
 #selected{
      -fx-line-spacing: .5em;
      -fx-font-size:16px;
-
-
 }

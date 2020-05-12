@@ -44,79 +44,57 @@ public class Controller {
     ObservableList<ChoiceBox<String>> listOfChoiceBoxes = FXCollections.observableArrayList();
     ObservableList<Note> listOfNotes = FXCollections.observableArrayList();
 
-
-
-
-
     public void eventA(ActionEvent e){
-        Note note = new Note("a");
-        CheckBox checkBox = (CheckBox) e.getSource();
-        handleCheckBoxEvents(checkBox, note);
+        getNoteAndCheckBox("a", e);
     }
 
     public void eventAis(ActionEvent e){
-        Note note = new Note("a#");
-        CheckBox checkBox = (CheckBox) e.getSource();
-        handleCheckBoxEvents(checkBox, note);
+        getNoteAndCheckBox("a#", e);
     }
 
     public void eventB(ActionEvent e){
-        CheckBox checkBox = (CheckBox) e.getSource();
-        Note note = new Note("b");
-        handleCheckBoxEvents(checkBox, note);
+        getNoteAndCheckBox("b", e);
     }
 
     public void eventC(ActionEvent e){
-        CheckBox checkBox = (CheckBox) e.getSource();
-        Note note = new Note("c");
-        handleCheckBoxEvents(checkBox, note);
+        getNoteAndCheckBox("c", e);
     }
 
     public void eventCis(ActionEvent e){
-        CheckBox checkBox = (CheckBox) e.getSource();
-        Note note = new Note("c#");
-        handleCheckBoxEvents(checkBox, note);
+        getNoteAndCheckBox("c#", e);
     }
 
     public void eventD(ActionEvent e){
-        CheckBox checkBox = (CheckBox) e.getSource();
-        Note note = new Note("d");
-        handleCheckBoxEvents(checkBox, note);
+        getNoteAndCheckBox("d", e);
     }
 
     public void eventDis(ActionEvent e){
-        CheckBox checkBox = (CheckBox) e.getSource();
-        Note note = new Note("d#");
-        handleCheckBoxEvents(checkBox, note);
+        getNoteAndCheckBox("d#", e);
     }
 
     public void eventE(ActionEvent e){
-        CheckBox checkBox = (CheckBox) e.getSource();
-        Note note = new Note("e");
-        handleCheckBoxEvents(checkBox, note);
+        getNoteAndCheckBox("e", e);
     }
 
     public void eventF(ActionEvent e){
-        CheckBox checkBox = (CheckBox) e.getSource();
-        Note note = new Note("f");
-        handleCheckBoxEvents(checkBox, note);
+        getNoteAndCheckBox("f", e);
     }
 
     public void eventFis(ActionEvent e){
-        CheckBox checkBox = (CheckBox) e.getSource();
-        Note note = new Note("f#");
-        handleCheckBoxEvents(checkBox, note);
+        getNoteAndCheckBox("f#", e);
     }
 
     public void eventG(ActionEvent e){
-        CheckBox checkBox = (CheckBox) e.getSource();
-        Note note = new Note("g");
-        handleCheckBoxEvents(checkBox, note);
+        getNoteAndCheckBox("g", e);
     }
 
     public void eventGis(ActionEvent e){
+        getNoteAndCheckBox("g#", e);
+    }
+
+    private void getNoteAndCheckBox(String noteName, ActionEvent e){
         CheckBox checkBox = (CheckBox) e.getSource();
-        Note note = new Note("g#");
+        Note note = new Note(noteName);
         handleCheckBoxEvents(checkBox, note);
     }
 
@@ -130,8 +108,7 @@ public class Controller {
     }
 
     public void updateChordNameOnUncheck(Note note){
-        int indexOfNoteToRemove = listOfNotes.indexOf(note);
-        listOfNotes.remove(indexOfNoteToRemove);
+        listOfNotes.remove(note);
         String namesList = ChordCalculatorMain.getNameOfChordAndAllInversions(listOfNotes);
         selected.setText(namesList);
     }
@@ -141,36 +118,4 @@ public class Controller {
         String namesList = ChordCalculatorMain.getNameOfChordAndAllInversions(listOfNotes);
         selected.setText(namesList);
     }
-
-
-    @FXML
-    public void choiceBoxHandler(ActionEvent e) {
-        String chosenNote = choiceBoxRoot.getValue();
-        CheckBox checkBox = getCorrespondingCheckbox(chosenNote);
-        previouslySelectedCheckbox.setSelected(false);
-        checkBox.setSelected(true);
-        previouslySelectedCheckbox = checkBox;
-    }
-
-    public CheckBox getCorrespondingCheckbox(String chosenNote){
-        switch (chosenNote) {
-            case "A": return checkBoxA;
-            case "A#/Bb": return checkBoxAis;
-            case "B": return checkBoxB;
-            case "C": return checkBoxC;
-            case "C#/Db": return checkBoxCis;
-            case "D": return checkBoxD;
-            case "D#/Eb": return checkBoxDis;
-            case "E": return checkBoxE;
-            case "F": return checkBoxF;
-            case "F#/Gb": return checkBoxFis;
-            case "G": return checkBoxG;
-            case "G#/Ab": return checkBoxGis;
-        }
-        return checkBoxA;
-    }
-
-
-
-
 }
