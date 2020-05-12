@@ -7,7 +7,7 @@
 
 <?import javafx.scene.layout.VBox?>
 <GridPane fx:controller="chordcalculatorGUI.Controller"
-          xmlns:fx="http://javafx.com/fxml"  hgap="20" vgap="10" gridLinesVisible="false"
+          xmlns:fx="http://javafx.com/fxml"  hgap="20" vgap="10"
           minHeight="500" maxHeight="500" minWidth="900" maxWidth="900" >
 
     <Region GridPane.rowIndex="0" GridPane.columnIndex="0" minWidth="50" minHeight="30"/>
@@ -17,8 +17,7 @@
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="A"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <CheckBox fx:id="checkBoxA" onAction="#eventA">
-        </CheckBox>
+        <CheckBox onAction="#handleCheckBox" id="a"/>
     </HBox>
 
     <HBox GridPane.rowIndex="1" GridPane.columnIndex="3" spacing="2" alignment="CENTER" minWidth="90"
@@ -26,8 +25,7 @@
         <Region HBox.hgrow="ALWAYS"/>
         <Label id="AisLabel" text="A#/Bb" />
         <Region HBox.hgrow="ALWAYS"/>
-        <CheckBox fx:id="checkBoxAis" onAction="#eventAis" >
-        </CheckBox>
+        <CheckBox onAction="#handleCheckBox" id="a#"/>
     </HBox>
 
     <HBox styleClass="greyBox" GridPane.rowIndex="1" GridPane.columnIndex="4" alignment="CENTER" minWidth="90"
@@ -35,24 +33,21 @@
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="B"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <CheckBox fx:id="checkBoxB" onAction="#eventB" >
-        </CheckBox>
+        <CheckBox onAction="#handleCheckBox" id="b"/>
     </HBox>
 
     <HBox GridPane.rowIndex="1" GridPane.columnIndex="5" alignment="CENTER" minWidth="90" maxWidth="90">
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="C"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <CheckBox fx:id="checkBoxC" onAction="#eventC" >
-        </CheckBox>
+        <CheckBox onAction="#handleCheckBox" id="c"/>
     </HBox>
 
     <HBox GridPane.rowIndex="2" GridPane.columnIndex="2" alignment="CENTER" spacing="2" minWidth="90"
           maxWidth="90" maxHeight="40" minHeight="40" >
         <Label text="C#/Db"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <CheckBox fx:id="checkBoxCis" onAction="#eventCis" >
-        </CheckBox>
+        <CheckBox onAction="#handleCheckBox" id="c#"/>
     </HBox>
 
     <HBox styleClass="greyBox" GridPane.rowIndex="2" GridPane.columnIndex="3" alignment="CENTER" minWidth="90"
@@ -60,16 +55,14 @@
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="D"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <CheckBox fx:id="checkBoxD" onAction="#eventD" >
-        </CheckBox>
+        <CheckBox onAction="#handleCheckBox" id="d"/>
     </HBox>
 
     <HBox GridPane.rowIndex="2" GridPane.columnIndex="4" alignment="CENTER" spacing="2" minWidth="90"
           maxWidth="90">
         <Label text="D#/Eb"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <CheckBox fx:id="checkBoxDis" onAction="#eventDis">
-        </CheckBox>
+        <CheckBox onAction="#handleCheckBox" id="d#"/>
     </HBox>
 
     <HBox styleClass="greyBox" GridPane.rowIndex="2" GridPane.columnIndex="5" alignment="CENTER" minWidth="90"
@@ -77,8 +70,7 @@
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="E"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <CheckBox fx:id="checkBoxE" onAction="#eventE">
-        </CheckBox>
+        <CheckBox onAction="#handleCheckBox" id="e"/>
     </HBox>
 
     <HBox styleClass="greyBox" GridPane.rowIndex="3" GridPane.columnIndex="2" alignment="CENTER" minHeight="40"
@@ -86,16 +78,14 @@
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="F"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <CheckBox fx:id="checkBoxF" onAction="#eventF" >
-        </CheckBox>
+        <CheckBox onAction="#handleCheckBox" id="f"/>
     </HBox>
 
     <HBox GridPane.rowIndex="3" GridPane.columnIndex="3" spacing="2" alignment="CENTER" minWidth="90"
           maxWidth="90">
         <Label text="F#/Gb"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <CheckBox fx:id="checkBoxFis" onAction="#eventFis" >
-        </CheckBox>
+        <CheckBox onAction="#handleCheckBox" id="f#"/>
     </HBox>
 
     <HBox styleClass="greyBox" GridPane.rowIndex="3" GridPane.columnIndex="4" alignment="CENTER" minWidth="90"
@@ -103,14 +93,13 @@
         <Region HBox.hgrow="ALWAYS"/>
         <Label text="G"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <CheckBox fx:id="checkBoxG" onAction="#eventG">
-        </CheckBox>
+        <CheckBox onAction="#handleCheckBox" id="g"/>
     </HBox>
+
     <HBox GridPane.rowIndex="3" GridPane.columnIndex="5" spacing="2" alignment="CENTER" minWidth="90" maxWidth="90">
         <Label text="G#/Ab"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <CheckBox fx:id="checkBoxGis" onAction="#eventGis">
-        </CheckBox>
+        <CheckBox onAction="#handleCheckBox" id="g#"/>
     </HBox>
 
     <VBox GridPane.rowIndex="4" GridPane.columnIndex="1"  alignment="TOP_CENTER">
@@ -123,7 +112,7 @@
 
     <VBox GridPane.rowIndex="4" GridPane.columnIndex="2" GridPane.columnSpan="4" spacing="5">
         <Region/>
-        <Label fx:id="selected" >
+        <Label fx:id="label">
             <font>
                 <Font name="Avenir" size="20"/>
             </font>

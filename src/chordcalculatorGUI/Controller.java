@@ -2,99 +2,31 @@ package chordcalculatorGUI;
 
 import chordCalculatorDataModel.ChordCalculatorMain;
 import chordCalculatorDataModel.Note;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
 public class Controller {
     @FXML
-    ChoiceBox<String> choiceBoxRoot;
-    @FXML
-    CheckBox checkBoxA;
-    @FXML
-    CheckBox checkBoxAis;
-    @FXML
-    CheckBox checkBoxB;
-    @FXML
-    CheckBox checkBoxC;
-    @FXML
-    CheckBox checkBoxCis;
-    @FXML
-    CheckBox checkBoxD;
-    @FXML
-    CheckBox checkBoxDis;
-    @FXML
-    CheckBox checkBoxE;
-    @FXML
-    CheckBox checkBoxF;
-    @FXML
-    CheckBox checkBoxFis;
-    @FXML
-    CheckBox checkBoxG;
-    @FXML
-    CheckBox checkBoxGis;
-    @FXML
-    Label selected;
-    CheckBox previouslySelectedCheckbox;
+    Label label;
 
-    ObservableList<ChoiceBox<String>> listOfChoiceBoxes = FXCollections.observableArrayList();
+    StringProperty chordNames = new SimpleStringProperty();
+
     ObservableList<Note> listOfNotes = FXCollections.observableArrayList();
 
-    public void eventA(ActionEvent e){
-        getNoteAndCheckBox("a", e);
+    public void initialize(){
+        label.textProperty().bind(chordNames);
     }
 
-    public void eventAis(ActionEvent e){
-        getNoteAndCheckBox("a#", e);
-    }
-
-    public void eventB(ActionEvent e){
-        getNoteAndCheckBox("b", e);
-    }
-
-    public void eventC(ActionEvent e){
-        getNoteAndCheckBox("c", e);
-    }
-
-    public void eventCis(ActionEvent e){
-        getNoteAndCheckBox("c#", e);
-    }
-
-    public void eventD(ActionEvent e){
-        getNoteAndCheckBox("d", e);
-    }
-
-    public void eventDis(ActionEvent e){
-        getNoteAndCheckBox("d#", e);
-    }
-
-    public void eventE(ActionEvent e){
-        getNoteAndCheckBox("e", e);
-    }
-
-    public void eventF(ActionEvent e){
-        getNoteAndCheckBox("f", e);
-    }
-
-    public void eventFis(ActionEvent e){
-        getNoteAndCheckBox("f#", e);
-    }
-
-    public void eventG(ActionEvent e){
-        getNoteAndCheckBox("g", e);
-    }
-
-    public void eventGis(ActionEvent e){
-        getNoteAndCheckBox("g#", e);
-    }
-
-    private void getNoteAndCheckBox(String noteName, ActionEvent e){
+    @FXML
+    public void handleCheckBox(ActionEvent e){
         CheckBox checkBox = (CheckBox) e.getSource();
-        Note note = new Note(noteName);
+        Note note = new Note(checkBox.getId());
         handleCheckBoxEvents(checkBox, note);
     }
 
@@ -109,13 +41,11 @@ public class Controller {
 
     public void updateChordNameOnUncheck(Note note){
         listOfNotes.remove(note);
-        String namesList = ChordCalculatorMain.getNameOfChordAndAllInversions(listOfNotes);
-        selected.setText(namesList);
+        chordNames.set(ChordCalculatorMain.getNameOfChordAndAllInversions(listOfNotes));
     }
 
     public void updateChordNameOnCheck(Note note){
         listOfNotes.add(note);
-        String namesList = ChordCalculatorMain.getNameOfChordAndAllInversions(listOfNotes);
-        selected.setText(namesList);
+        chordNames.set(ChordCalculatorMain.getNameOfChordAndAllInversions(listOfNotes));
     }
 }
