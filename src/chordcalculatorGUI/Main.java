@@ -1,0 +1,29 @@
+package chordcalculatorGUI;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
+//        setUserAgentStylesheet(STYLESHEET_CASPIAN);
+        primaryStage.setTitle("Chord Calculator");
+        primaryStage.setScene(new Scene(root, 700, 600));
+        primaryStage.setMinWidth(700);
+        primaryStage.setMaxWidth(700);
+        primaryStage.setMinHeight(600);
+        primaryStage.setMaxHeight(600);
+        primaryStage.getScene().getStylesheets().add(getClass().getResource("chordcalculatorGUI.css").toExternalForm());
+        primaryStage.show();
+    }
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
