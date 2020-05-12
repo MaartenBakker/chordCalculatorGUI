@@ -2,24 +2,24 @@ package chordCalculatorDataModel;
 
 public class Fourth extends Interval {
 
-    public Fourth(Note laagsteNote, Note hoogsteNote) {
-        super(laagsteNote, hoogsteNote);
-        super.setName(createNaam());
+    public Fourth(Note lowestNote, Note highestNote) {
+        super(lowestNote, highestNote);
+        super.setName(createName());
     }
 
-    private String createNaam(){
-        String naam ="";
-        naam += getVoorzetsel();
-        naam += " Kwart";
-        return naam;
+    private String createName(){
+        String name ="";
+        name += getModifier();
+        name += " Fourth";
+        return name;
     }
 
-    private String getVoorzetsel(){
+    private String getModifier(){
         switch (getSemiTones()){
-            case 4: return "Verminderde";
-            case 5: return "Reine";
-            case 6: return "Overmatige";
+            case 4: return DIMINISHED;
+            case 5: return PERFECT;
+            case 6: return AUGMENTED;
         }
-        return "Onbekend";
+        return UNKNOWN;
     }
 }

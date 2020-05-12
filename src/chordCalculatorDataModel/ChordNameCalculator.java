@@ -225,7 +225,9 @@ public class ChordNameCalculator {
     }
 
     private void processMinorSixth(){
-        if (theChordIsAMinorSixChord()){
+        if (theChordIsAMinorSixChord() && !semiTones.contains(MAJOR_THIRD) ||
+            semiTones.contains(MAJOR_THIRD) && semiTones.contains(MINOR_SIXTH) &&
+            semiTones.contains(PERFECT_FIFTH)){
             addFlatSixthToAlterations();
             setNo5thIfTheChordIsAMinor6thAndThereIsNoPerfectOrFlatFifth();
         }
@@ -340,7 +342,8 @@ public class ChordNameCalculator {
     }
 
     private void setNo5thIfTheChordIsAMinor6thAndThereIsNoPerfectOrFlatFifth(){
-        if (theChordIsAMinorSixChord() && !semiTones.contains(PERFECT_FIFTH) && !semiTones.contains(FLAT_FIFTH)){
+        if (theChordIsAMinorSixChord() && !semiTones.contains(PERFECT_FIFTH) && !semiTones.contains(FLAT_FIFTH)
+            && !semiTones.contains(MAJOR_THIRD)){
             addNoFifthToNoThirdOrNoFifth();
         }
     }
@@ -380,7 +383,7 @@ public class ChordNameCalculator {
     }
 
     private void addFourthToAdds(){
-        chordInfoObject.getAdds().add("add4");
+        chordInfoObject.getAdds().add(",add4");
     }
 
     private void addSharpFourthToAlterations(){
@@ -420,10 +423,6 @@ public class ChordNameCalculator {
                 || semiTones.contains(MAJOR_THIRD)) && !semiTones.contains(PERFECT_FIFTH);//in case of #9
     }
 
-    private boolean theChordisASharpNineChord(){
-        return semiTones.contains(MINOR_THIRD) && semiTones.contains(MAJOR_THIRD);
-    }
-
     private boolean thereIsNoFifthAtAll() {
         return (!semiTones.contains(FLAT_FIFTH) && !semiTones.contains(PERFECT_FIFTH) && !semiTones.contains(SHARP_FIFTH));
 //                || (!semiTones.contains(FLAT_FIFTH) && !semiTones.contains(PERFECT_FIFTH) && !theChordIsNotMinor()) ;
@@ -458,7 +457,8 @@ public class ChordNameCalculator {
     }
 
     private boolean theChordIsAMinorSixChord(){
-        return (semiTones.contains(MINOR_SIXTH) && semiTones.contains(PERFECT_FIFTH)) || (semiTones.contains(MINOR_SIXTH) && semiTones.contains(MINOR_THIRD));
+        return (semiTones.contains(MINOR_SIXTH) && semiTones.contains(PERFECT_FIFTH)) ||
+                (semiTones.contains(MINOR_SIXTH) && semiTones.contains(MINOR_THIRD));
     }
 
     private boolean theChordIsASixChord(){

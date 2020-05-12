@@ -2,25 +2,25 @@ package chordCalculatorDataModel;
 
 public class Seventh extends Interval {
 
-    public Seventh(Note laagsteNote, Note hoogsteNote) {
-        super(laagsteNote, hoogsteNote);
-        super.setName(createNaam());
+    public Seventh(Note lowestNote, Note highestNote) {
+        super(lowestNote, highestNote);
+        super.setName(createName());
     }
 
-    private String createNaam(){
-        String naam ="";
-        naam += getVoorzetsel();
-        naam += " Septime";
-        return naam;
+    private String createName(){
+        String name ="";
+        name += getModifier();
+        name += " Seventh";
+        return name;
     }
 
-    private String getVoorzetsel(){
+    private String getModifier(){
         switch (getSemiTones()){
-            case 9: return "Verminderde";
-            case 10: return "Kleine";
-            case 11: return "Grote";
-            case 12: return "Overmatige";
+            case 9: return DIMINISHED;
+            case 10: return MINOR;
+            case 11: return MAJOR;
+            case 12: return AUGMENTED;
         }
-        return "Onbekend";
+        return UNKNOWN;
     }
 }

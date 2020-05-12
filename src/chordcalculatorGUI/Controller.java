@@ -4,20 +4,20 @@ import chordCalculatorDataModel.ChordCalculatorMain;
 import chordCalculatorDataModel.Note;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
     @FXML
     Label label;
 
     StringProperty chordNames = new SimpleStringProperty();
-
-    ObservableList<Note> listOfNotes = FXCollections.observableArrayList();
+    List<Note> listOfNotes = new ArrayList<>();
 
     public void initialize(){
         label.textProperty().bind(chordNames);

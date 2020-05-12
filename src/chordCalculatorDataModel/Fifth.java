@@ -2,24 +2,24 @@ package chordCalculatorDataModel;
 
 public class Fifth extends Interval {
 
-    public Fifth(Note laagsteNote, Note hoogsteNote) {
-        super(laagsteNote, hoogsteNote);
-        super.setName(createNaam());
+    public Fifth(Note lowestNote, Note highestNote) {
+        super(lowestNote, highestNote);
+        super.setName(createName());
     }
 
-    private String createNaam(){
-        String naam ="";
-        naam += getVoorzetsel();
-        naam += " Kwint";
-        return naam;
+    private String createName(){
+        String name ="";
+        name += getModifier();
+        name += " Fifth";
+        return name;
     }
 
-    private String getVoorzetsel(){
+    private String getModifier(){
         switch (getSemiTones()){
-            case 6: return "Verminderde";
-            case 7: return "Reine";
-            case 8: return "Overmatige";
+            case 6: return DIMINISHED;
+            case 7: return PERFECT;
+            case 8: return AUGMENTED;
         }
-        return "Onbekend";
+        return UNKNOWN;
     }
 }

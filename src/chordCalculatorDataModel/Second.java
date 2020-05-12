@@ -4,23 +4,23 @@ public class Second extends Interval {
 
     public Second(Note lowestNote, Note highestNote) {
         super(lowestNote, highestNote);
-        this.setName(createNaam());
+        this.setName(createName());
     }
 
-    private String createNaam(){
-        String naam ="";
-        naam += getVoorzetsel();
-        naam += " Secunde";
-        return naam;
+    private String createName(){
+        String name ="";
+        name += getModifier();
+        name += " Second";
+        return name;
     }
 
-    private String getVoorzetsel(){
+    private String getModifier(){
         switch (getSemiTones()){
-            case 0: return "Verminderde";
-            case 1: return "Kleine";
-            case 2: return "Grote";
-            case 3: return "Overmatige";
+            case 0: return DIMINISHED;
+            case 1: return MINOR;
+            case 2: return MAJOR;
+            case 3: return AUGMENTED;
         }
-        return "Onbekend";
+        return UNKNOWN;
     }
 }

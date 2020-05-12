@@ -9,7 +9,6 @@ public class Chord {
     private final List<Interval> intervalsBetweenNotes = new ArrayList<>();
     private final List<Integer> semiTonesInRelationToLowestNote = new ArrayList<>();
     private final List<Integer> semiTonesBetweenNotes = new ArrayList<>();
-    private int inversion = 0; //only used in dictonary when creating entry
 
     public Chord(List<Note> notes) {
         this.notes = notes;
@@ -49,56 +48,10 @@ public class Chord {
         }
     }
 
-    public static Chord createSpecificInversionOfChord(Chord chord, int omkering) {
-        for (int i = 0; i < omkering; i++) {
-            chord = chord.getNextInversion();
-        }
-        chord.setInversion(omkering);
-        return chord;
-    }
-
     public Chord getNextInversion() {
         List<Note> noten = getNotes();
         List<Note> omgekeerdeNoten = Note.invert(noten);
         return new Chord(omgekeerdeNoten);
-    }
-
-    public List<ChordType> getChordNameFromDictionary() {
-        List<ChordType> chordTypes = new ArrayList<>();
-        Map<Chord, ChordType> opzoekMap = ChordDictionary.getMapVanAkkoordTypes();
-        for (Map.Entry<Chord, ChordType> entrySet : opzoekMap.entrySet()) {
-            if (entrySet.getKey().intervalsBetweenNotes.equals(this.intervalsBetweenNotes)) {
-                chordTypes.add(entrySet.getValue());
-            }
-        }
-        return chordTypes;
-    }
-
-    public List<ChordType> getSynonymsFromDictionary() {
-        List<ChordType> akkoordSynoniemen = new ArrayList<>();
-        Map<Chord, ChordType> opzoekMap = ChordDictionary.getMapVanAkkoordTypes();
-        for (Map.Entry<Chord, ChordType> entrySet : opzoekMap.entrySet()) {
-            if (entrySet.getKey().semiTonesBetweenNotes.equals(this.semiTonesBetweenNotes) &&
-                    (!getChordNameFromDictionary().contains(entrySet.getValue()))) {
-                akkoordSynoniemen.add(entrySet.getValue());
-            }
-        }
-        return akkoordSynoniemen;
-    }
-
-    public List<ChordType> getSuperSetsFromDictionary() {
-        List<ChordType> superSetAkkoorden = new ArrayList<>();
-        Map<Chord, ChordType> opzoekMap = ChordDictionary.getMapVanAkkoordTypes();
-
-        for (Map.Entry<Chord, ChordType> entrySet : opzoekMap.entrySet()) {
-            List<Interval> superLijstAkoordIntervallen = entrySet.getKey().getIntervalsBetweenNotes();
-            if (areTheIntervalsBetweenTheNotesALinkedSubset(superLijstAkoordIntervallen)) {
-                if (!this.getChordNameFromDictionary().contains(entrySet.getValue())) {
-                    superSetAkkoorden.add(entrySet.getValue());
-                }
-            }
-        }
-        return superSetAkkoorden;
     }
 
     boolean areTheIntervalsBetweenTheNotesALinkedSubset(List<Interval> superLijst) {
@@ -119,17 +72,6 @@ public class Chord {
         return flag;
     }
 
-    private Note getRoot(ChordType chordType) {
-        if (chordType.getInversion() == 0) {
-            return this.notes.get(0);
-        } else {
-            return (this.notes.get(this.notes.size() - chordType.getInversion()));
-        }
-    }
-
-    public void setInversion(int inversion) {
-        this.inversion = inversion;
-    }
 
     public List<Note> getNotes() {
         return Collections.unmodifiableList(notes);
@@ -149,63 +91,14 @@ public class Chord {
         if (o == null || getClass() != o.getClass()) return false;
         Chord chord = (Chord) o;
         return Objects.equals(intervalsInRelationToLowestNote, chord.intervalsInRelationToLowestNote) &&
-                Objects.equals(intervalsBetweenNotes, chord.intervalsBetweenNotes) &&
-                Objects.equals(inversion, chord.inversion);
+                Objects.equals(intervalsBetweenNotes, chord.intervalsBetweenNotes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(intervalsInRelationToLowestNote, intervalsBetweenNotes, inversion);
+        return Objects.hash(intervalsInRelationToLowestNote, intervalsBetweenNotes);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        if (!getChordNameFromDictionary().isEmpty()) {
-            for (ChordType chordType : getChordNameFromDictionary()) {
-                sb.append(akkoordTypesToString(chordType));
-            }
-        } else {
-            sb.append("Onbekend akkoord");
-        }
-
-        sb.append("\n noten=").append(notes);
-        sb.append("\n intervallenVanafGrondtoon=").append(intervalsInRelationToLowestNote);
-        sb.append("\n intervallenTussenNoten=").append(intervalsBetweenNotes);
-        sb.append("\n\n");
-
-        if (!getSynonymsFromDictionary().isEmpty()) {
-            sb.append("Enharmonisch gelijk: ");
-            for (ChordType chordType : getSynonymsFromDictionary()) {
-                sb.append(akkoordTypesToString(chordType));
-            }
-        } else {
-            sb.append("Geen enharmonisch gelijke akkoorden");
-        }
-
-        sb.append("\nkomt voor in:").append("\n").append(getSuperSetsFromDictionary());
-
-        return sb.toString();
-    }
-
-    private String akkoordTypesToString(ChordType chordType) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(Character.toUpperCase(getRoot(chordType).getNoteName().charAt(0)));
-        for (int i = 1; i < getRoot(chordType).getNoteName().length(); i++) {
-            sb.append(getRoot(chordType).getNoteName().charAt(i));
-        }
-        sb.append(" ");
-        sb.append(chordType.getName()).append(" ");
-        if (chordType.getInversion() != 0) {
-            sb.append(chordType.getInversion()).append("e omkering");
-        } else {
-            sb.append("grondligging");
-        }
-        sb.append("\n");
-        return sb.toString();
-
-    }
 }
 
 

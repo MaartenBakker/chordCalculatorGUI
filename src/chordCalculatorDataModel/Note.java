@@ -3,14 +3,14 @@ package chordCalculatorDataModel;
 import java.util.*;
 
 public class Note {
-    private static final Map<Character, Integer> mapVanInitieleNotenwaardes = createMapVanInitieleNotenwaardes();
+    private static final Map<Character, Integer> mapOfInitialNoteValues = createMapOfInitialNoteValues();
     private final String noteName;
     private final char stamToon;
     private char firstAccidental;
     private char secondAccidental;
     private final int value;
 
-    private static Map<Character, Integer> createMapVanInitieleNotenwaardes(){
+    private static Map<Character, Integer> createMapOfInitialNoteValues(){
         Map<Character, Integer> tempMap = new LinkedHashMap<>();
         tempMap.put('a', 0);
         tempMap.put('b', 2);
@@ -56,13 +56,13 @@ public class Note {
     }
 
     public int setInitialNoteValue() {
-        int notenWaarde = mapVanInitieleNotenwaardes.get(this.stamToon);
-        if (this.firstAccidental == '#') {notenWaarde++;}
-        if (this.secondAccidental == '#') {notenWaarde++;}
-        if (this.firstAccidental == 'b') {notenWaarde--;}
-        if (this.secondAccidental == 'b') {notenWaarde--;}
+        int noteValue = mapOfInitialNoteValues.get(this.stamToon);
+        if (this.firstAccidental == '#') {noteValue++;}
+        if (this.secondAccidental == '#') {noteValue++;}
+        if (this.firstAccidental == 'b') {noteValue--;}
+        if (this.secondAccidental == 'b') {noteValue--;}
 
-        return notenWaarde;
+        return noteValue;
     }
 
     static List<Note> invert(List<Note> notes) {

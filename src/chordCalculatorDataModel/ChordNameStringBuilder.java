@@ -46,7 +46,6 @@ public class ChordNameStringBuilder {
     private String extensionsJoinedWithStringJoiner(){
         StringJoiner stringJoiner = new StringJoiner(",");
 
-
         for (String string : chordInfoObject.getExtensions()){
             stringJoiner.add(string);
         }

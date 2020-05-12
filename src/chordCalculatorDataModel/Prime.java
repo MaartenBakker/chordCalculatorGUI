@@ -2,23 +2,23 @@ package chordCalculatorDataModel;
 
 public class Prime extends Interval {
 
-    public Prime(Note laagsteNote, Note hoogsteNote) {
-        super(laagsteNote, hoogsteNote);
-        super.setName(createNaam());
+    public Prime(Note lowestNote, Note highestNote) {
+        super(lowestNote, highestNote);
+        super.setName(createName());
     }
 
-    private String createNaam(){
-        String naam ="";
-        naam += getVoorzetsel();
-        naam += " Prime";
-        return naam;
+    private String createName(){
+        String name ="";
+        name += getModifier();
+        name += " Prime";
+        return name;
     }
 
-    private String getVoorzetsel(){
+    private String getModifier(){
         switch (getSemiTones()){
-            case 0: return "Reine";
-            case 1: return "Overmatige";
+            case 0: return PERFECT;
+            case 1: return AUGMENTED;
         }
-        return "Onbekend";
+        return UNKNOWN;
     }
 }

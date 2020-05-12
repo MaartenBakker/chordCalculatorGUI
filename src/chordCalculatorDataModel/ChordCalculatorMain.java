@@ -36,8 +36,6 @@ public class ChordCalculatorMain {
         ChordNameCalculator chordNameCalculator;
         ChordNameStringBuilder chordNameStringBuilder;
         StringJoiner sj = new StringJoiner("\n");
-        String name;
-        String names = "";
 
 
         for (int i = 0; i < notes.size(); i++) {
@@ -45,7 +43,7 @@ public class ChordCalculatorMain {
             chordNameCalculator = new ChordNameCalculator(chord, chordInfoObject);
             chordInfoObject = chordNameCalculator.calculate();
             chordNameStringBuilder = new ChordNameStringBuilder(chordInfoObject);
-            name = chordNameStringBuilder.getBuiltName();
+            String name = chordNameStringBuilder.getBuiltName();
 
             System.out.println(chord.getNotes());
             System.out.println(name);
@@ -54,9 +52,7 @@ public class ChordCalculatorMain {
             chord = chord.getNextInversion();
         }
 
-        names = sj.toString();
-
-        return names;
+        return sj.toString();
     }
 
 }

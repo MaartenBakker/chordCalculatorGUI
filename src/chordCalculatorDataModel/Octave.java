@@ -1,22 +1,22 @@
 package chordCalculatorDataModel;
 
 public class Octave extends Interval {
-    public Octave(Note laagsteNote, Note hoogsteNote) {
-        super(laagsteNote, hoogsteNote);
-        super.setName(createNaam());
+    public Octave(Note lowestNote, Note highestNote) {
+        super(lowestNote, highestNote);
+        super.setName(createName());
     }
 
-    private String createNaam(){
-        String naam ="";
-        naam += getVoorzetsel();
-        naam += " Octaaf";
-        return naam;
+    private String createName(){
+        String name ="";
+        name += getModifier();
+        name += " Octave";
+        return name;
     }
 
-    private String getVoorzetsel(){
+    private String getModifier(){
         if (getSemiTones() == 11) {
-            return "Verminderd";
+            return DIMINISHED;
         }
-        return "Onbekend";
+        return UNKNOWN;
     }
 }

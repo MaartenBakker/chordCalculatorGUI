@@ -13,6 +13,12 @@ public abstract class Interval {
     private int semiTones;
     private String name = "";
     private int intervalIndicator;
+    String DIMINISHED = "Diminished";
+    String MINOR = "Minor";
+    String MAJOR = "Major";
+    String PERFECT = "Perfect";
+    String AUGMENTED = "Augmented";
+    String UNKNOWN = "Unknown";
 
     protected Interval(Note lowNote, Note highNote) {
         this.lowNote = lowNote;
@@ -87,7 +93,7 @@ public abstract class Interval {
         }
     }
 
-    public Interval keerTweeklankOm(){
+    public Interval invertInterval(){
         return createInterval(highNote, lowNote);
     }
 
