@@ -3,45 +3,16 @@
     -fx-font-family: 'Avenir Heavy';
 }
 
-#ABox{
+.greyBox{
     -fx-background-color: #E8E8E8;
     -fx-border-radius: 10 10 10 10;
     -fx-background-radius: 10 10 10 10;
 }
 
-#BBox{
-    -fx-background-color: #E8E8E8;
-    -fx-border-radius: 10 10 10 10;
-    -fx-background-radius: 10 10 10 10;
+#chord{
+    -fx-font-size:22px;
 }
 
-#DBox{
-    -fx-background-color: #E8E8E8;
-    -fx-border-radius: 10 10 10 10;
-    -fx-background-radius: 10 10 10 10;
-}
-
-#EBox{
-    -fx-background-color: #E8E8E8;
-    -fx-border-radius: 10 10 10 10;
-    -fx-background-radius: 10 10 10 10;
-}
-
-#FBox{
-    -fx-background-color: #E8E8E8;
-    -fx-border-radius: 10 10 10 10;
-    -fx-background-radius: 10 10 10 10;
-}
-
-#GBox{
-    -fx-background-color: #E8E8E8;
-    -fx-border-radius: 10 10 10 10;
-    -fx-background-radius: 10 10 10 10;
-}
-
-#selected{
-     -fx-line-spacing: .5em;
-     -fx-font-size:16px;
-
-
+#chordDisplay{
+     -fx-line-spacing:0.5em;
 }
